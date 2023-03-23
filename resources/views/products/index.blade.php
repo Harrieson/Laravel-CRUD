@@ -5,8 +5,16 @@
         <div class="titlebar">
             <h1>Products</h1>
             <a href="{{route('products.create')}}" class="btn-link">Add Product</a>
-
         </div>
+
+        @if ($message = Session::get('success'))
+            <div>
+                <ul>
+                    <li>{{$message}}</li>
+                </ul>
+            </div>
+
+        @endif
         <div class="table">
             <div class="table-filter">
                 <div>
