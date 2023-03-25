@@ -8,11 +8,26 @@
         </div>
 
         @if ($message = Session::get('success'))
-            <div>
-                <ul>
-                    <li>{{$message}}</li>
-                </ul>
-            </div>
+            <script type="text/javascript">
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timeProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTime)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: '{{$message}}'
+                })
+
+
+            </script>
 
         @endif
         <div class="table">
